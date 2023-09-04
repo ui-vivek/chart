@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.chartMenu {
+  width: 100vw;
+  height: 40px;
+  background: lightblue;
+  color: lightcoral;
+}
+.chartMenu p {
+  padding: 10px;
+  font-size: 20px;
+}
+.chartCard {
+  width: 100vw;
+  height: calc(100vh -40px);
+  background: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chartBox{
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px darkblue;
+    background: white;
+}
+.scrollBox{
+  height: 500px;
+  max-height: 250px;
+}

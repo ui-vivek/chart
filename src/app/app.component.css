@@ -1,0 +1,26 @@
+/* 
+.outer {
+  height: 13rem;
+  width: 50rem;
+  margin: auto;
+  overflow: scroll;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: green;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darkgreen;
+} */
