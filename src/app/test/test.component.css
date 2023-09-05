@@ -28,7 +28,7 @@
     background: white;
 }
 .scrollBox{
-  height: 500px;
+  height: 800px;
   max-height: 250px;
   overflow-y: scroll;
 }

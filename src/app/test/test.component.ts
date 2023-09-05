@@ -1,6 +1,7 @@
 import { flush } from '@angular/core/testing';
 import { Chart } from 'chart.js/auto';
 import { Component, ElementRef, Renderer2, OnInit } from '@angular/core';
+Chart.defaults.datasets.bar.maxBarThickness = 73;
 
 @Component({
   selector: 'app-test',
@@ -14,67 +15,66 @@ export class TestComponent {
       data: {
         labels: [
           'January',
-          'February',
-          'March',
-          'April',
-          'May',
+          'January',
           'January',
           'February',
           'March',
-          'April',
-          'May',
+          'January',
+          'January',
+          'February',
+          'February',
+          'February',
+          'March',
+          'March',
+          'March',
         ],
         datasets: [
           {
-            // categoryPercentage: 0.4,
-            // barPercentage:0.4,
-            barPercentage:0.4,
-            categoryPercentage:0.7,
+            barPercentage: 0.7,
+            categoryPercentage: 0.7,
 
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'US',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#3E6D9C'],
           },
           {
-            // categoryPercentage: 0.4,
-            // barPercentage:1,
-            barPercentage:0.4,
-            categoryPercentage:0.7,
-
+            barPercentage: 0.7,
+            categoryPercentage: 0.7,
 
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'SS',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#03C988'],
           },
           {
-            // categoryPercentage: 0.4,
-            // barPercentage:0.9,
-            barPercentage:0.4,
-            categoryPercentage:0.7,
-
-
+            barPercentage: 0.7,
+            categoryPercentage: 0.7,
 
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'PU',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#17594A'],
           },
           {
-            // categoryPercentage: 0.4,
-            // barPercentage:0.9,
-            barPercentage:0.4,
-            categoryPercentage:0.7,
+            barPercentage: 0.7,
+            categoryPercentage: 0.7,
 
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'DP',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 8,8,10,11,5],
             backgroundColor: ['gray'],
           },
         ],
       },
       options: {
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (context) => {},
+            },
+          },
+        },
         indexAxis: 'y',
         maintainAspectRatio: false,
         layout: {
@@ -83,7 +83,15 @@ export class TestComponent {
           },
         },
         scales: {
+          y: {
+            afterFit: (context) => {
+              context.width = 100;
+            },
+          },
           x: {
+            afterFit: (context) => {
+              context.width = 100;
+            },
             beginAtZero: true,
             grid: {
               drawTicks: false,
@@ -104,25 +112,25 @@ export class TestComponent {
           {
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'US',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#3E6D9C'],
           },
           {
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'SS',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#03C988'],
           },
           {
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'PU',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['#17594A'],
           },
           {
             xAxisID: 'x', // Use xAxisID instead of yAxisID
             label: 'DP',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+            data: [1, 2, 3, 1, 2, 3, 3, 1, 2, 3],
             backgroundColor: ['gray'],
           },
         ],
@@ -130,12 +138,16 @@ export class TestComponent {
       options: {
         indexAxis: 'y',
         maintainAspectRatio: false,
+
         scales: {
           x: {
             beginAtZero: true,
+            ticks: {
+              stepSize: 1, // (remove decimals)------------ work on
+            },
             afterFit: (context) => {
               console.log(context);
-              context.height += 30;
+              context.height += 100;
             },
             grid: {
               drawTicks: false,
@@ -158,11 +170,17 @@ export class TestComponent {
         },
       },
     });
-    const scrollBoxBody = document.querySelector('.scrollBoxBody');
+    // const scrollBoxBody = document.querySelector('.scrollBoxBody');
     // if(myChart.data.labels.length>7){
-    //   const newHeight=300+((myChart.data.labels?.length - 7)*20);
-    //   scrollBoxBody?.computedStyleMap.height=`${newHeight}px`
+    // const newHeight=300+((myChart.data.labels?.length - 7)*20);
+    // scrollBoxBody?.computedStyleMap.height=`${newHeight}px`
     // }
-    // let zz=myChart.scales['y-axis-0'].height + myChart.scales['y-axis-0'].top + 10;
+    const scrollBoxBody = document.querySelector('.scrollBoxBody') as HTMLElement;
+
+    if (scrollBoxBody) {   //dynamic depends on the length of labels-------------if length is > 7
+      let newHeight = 300 + 13 * 20; // 300+(lables.length-7)*20------- can be adjust according to UI.
+      scrollBoxBody.style.height = `${newHeight}px`; //set the height of the chart virticaly.
+    }
+
   }
 }
