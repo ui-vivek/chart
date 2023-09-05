@@ -30,4 +30,11 @@
 .scrollBox{
   height: 500px;
   max-height: 250px;
+  overflow-y: scroll;
+}
+.box{
+  height: 50px;
+}
+.scrollBoxBody{
+  height: 300px;
 }
